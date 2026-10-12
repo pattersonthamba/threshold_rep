@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#11161b" />
+    <meta name="description" content="THRESHOLD: a browser-native first-person puzzle game about linked gates and conserved momentum." />
+    <title>THRESHOLD</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cellipse cx='10' cy='16' rx='6' ry='12' fill='none' stroke='%232ee6c9' stroke-width='3'/%3E%3Cellipse cx='22' cy='16' rx='6' ry='12' fill='none' stroke='%23ff4f8b' stroke-width='3'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <div id="hud" class="hidden">
+      <div id="reticle">
+        <span class="half left"></span>
+        <span class="half right"></span>
+        <span class="dot"></span>
+      </div>
+      <div id="chamber-tag"></div>
+      <div id="caption"></div>
+      <div id="hint"></div>
+    </div>
+
+    <div id="flash"></div>
+
+    <div id="menu" class="overlay">
+      <div class="panel">
+        <h1>THRESHOLD</h1>
+        <p class="sub">Two gates. One rule: what goes in comes out.</p>
+        <div id="menu-main" class="stack">
+          <button id="btn-play" class="primary">Begin</button>
+          <button id="btn-chambers">Chambers</button>
+          <button id="btn-settings">Settings</button>
+        </div>
+        <div id="menu-chambers" class="stack hidden">
+          <div id="chamber-grid"></div>
+          <button class="back">Back</button>
+        </div>
+        <div id="menu-settings" class="stack hidden">
+          <label>Mouse sensitivity <input id="set-sens" type="range" min="0.2" max="3" step="0.05" /></label>
+          <label>Field of view <input id="set-fov" type="range" min="60" max="110" step="1" /></label>
+          <label>Gate view quality
+            <select id="set-quality">
+              <option value="0.5">Fast (50%)</option>
+              <option value="0.75">Balanced (75%)</option>
+              <option value="1">Sharp (100%)</option>
+            </select>
+          </label>
+          <label>Volume <input id="set-vol" type="range" min="0" max="1" step="0.05" /></label>
+          <label class="check"><input id="set-invert" type="checkbox" /> Invert vertical look</label>
+          <label class="check"><input id="set-fps" type="checkbox" /> Show frame rate</label>
+          <button class="back">Back</button>
+        </div>
+        <div class="controls">
+          <span><kbd>WASD</kbd> move</span>
+          <span><kbd>Space</kbd> jump</span>
+          <span><kbd>LMB</kbd> / <kbd>RMB</kbd> gates</span>
+          <span><kbd>E</kbd> lift</span>
+          <span><kbd>R</kbd> restart</span>
+          <span><kbd>Esc</kbd> pause</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="pause" class="overlay hidden">
+      <div class="panel">
+        <h2>Paused</h2>
+        <div class="stack">
+          <button id="btn-resume" class="primary">Resume</button>
+          <button id="btn-restart">Restart chamber</button>
+          <button id="btn-quit">Main menu</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="card" class="hidden"></div>
+    <div id="fps" class="hidden"></div>
+    <div id="unsupported" class="overlay hidden">
+      <div class="panel"><h2>Keyboard and mouse needed</h2><p class="sub">THRESHOLD is a first-person game built for desktop browsers.</p></div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
